@@ -1,6 +1,21 @@
+# 👋About the MistBuddy Project
+This project builds a MistBuddy.  MistBuddy consists of a humidifier and two Tasmotized smart plugs. 
+>Note: The term "Tasmotized" is often used in the hobbyist community to refer to a device that has been flashed or reprogrammed with the [Tasmota firmware](https://tasmota.github.io/docs/). This is often done to extend the capabilities of the device or to make it compatible with a wider range of home automation software. In this case the tasmotized device is a [Sonoff S31 wifi smart plug](https://amzn.to/4eT2SJJ).
+
+MistBuddy spews out mist for a number of seconds each minute based on MistBuddy software that sends its power switches ON / OFF messages. The scenario is an indoor grow environment whose humidity is too low.
+>Note: Too low humidity can be determined by measuring the environment's VPD (Vapor Pressure Deficit).  VPD is a measure of the difference between the actual and saturation water vapor pressure at a certain temperature. It directly influences a plant's rate of transpiration. High VPD results in increased transpiration, leading to potential plant stress from excessive water loss. This can manifest as wilted leaves, slowed growth, reduced crop yield, and in extreme cases, plants dry up and die. High VPD conditions can deter certain pests preferring moist environments but can encourage others like spider mites and thrips that thrive in hot, dry conditions. Low VPD can lead to reduced transpiration, affecting nutrient transport within the plant and causing lower rates of photosynthesis due to stomatal closure. This condition also increases the risk of diseases such as powdery mildew and botrytis, as well as other pathogens that thrive in high humidity.
+
+Different plant types will prefer different ideal vpd levels. Some plants, like cacti and other succulents, are adapted to arid environments with potentially high VPD levels. They have evolved various mechanisms to conserve water, such as reduced leaf surface area and the ability to store water in their tissues. On the other hand, plants native to humid, tropical environments, like orchids, may prefer lower VPD levels. These plants have evolved to thrive in conditions of high humidity and are typically more sensitive to water loss through transpiration.
+
+I found this YouTube video best explained (at least to the way I see things) water vapor, temperature's relationship to Relative Humidity and VPD.
+
+The humidifier is an evolution of the one in the YouTube video [How to Build a Homemade Humidifier Using Ultrasonic Misters / fogger](https://www.youtube.com/watch?v=vmiO6Z_HLCE).
+
+The current software that sends ON / OFF messages to a MistBuddy device can be found in the [mistbuddy_lite github repo](https://github.com/solarslurpi/mistbuddy_lite).
+
 # Build the Humidifier
 **CAVEAT: I have been using a build using these parts.  As in "it works for me."  I am not a professional.  I am sharing with in hopes it can benefit others.  I am not responsible for any damages to your home or property.
-The humidifier is an evolution of the one in the YouTube video [How to Build a Homemade Humidifier Using Ultrasonic Misters / fogger](https://www.youtube.com/watch?v=vmiO6Z_HLCE).
+
 
 ## BoM
 
