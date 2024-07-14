@@ -40,7 +40,7 @@ The supplies needed to build this component of MistBuddy include:
 
 <!-- 2 cols for xtra small, 3 for small, 3 for medium, and 3 for large screens -->
 
-# Tasmotize Power Switches
+# Tasmotize the Power Switches
 In order to send mqtt messages to a power switch, the easiest way is to use a Tasmotized device.  The easiest way to do this is to reflash the [SONOFF S31 Lite plugs](https://amzn.to/3xnPWYc) with Tasmota.
 
 The reasons for the S31 plug include:
@@ -54,3 +54,16 @@ These directions assumed you have two [Sonoff S31 plugs](https://amzn.to/3xnPWYc
 The Sonoff S31 (or S31 Lite) can be flashed so that Tasmota is running on the local wifi. [This YouTube video gives instructions on how to flash Tasmota](https://www.youtube.com/watch?v=9N58uy3ezvA).
 ooh! Extra care when soldering.  If not, well...it is way too easy to rip off one of the pads...
 >If soldering, it is easy to rip off the pads.  I found using [clamp fixture with pogo pins/ 2.54mm Single row 6P](https://www.aliexpress.us/item/3256804682713003.html?spm=a2g0o.order_list.order_list_main.15.4b181802cPkXRI&gatewayAdapt=glo2usa) from aliexpress to be the best way to flash without soldering.
+
+# Setup the Power Switches
+Once the power switches have been flashed with Tasmota and put back together, plug it into the wall.
+## Find the IP addresses 
+Use a tool like [Angry IP](https://angryip.org/) to show the IP address.
+## Configure
+Go to a browser tab and type in the IP address of the Tasmotized smart plug. You'll be presented with a screen. Once configured, it will look something like:
+<p align="center">
+  <img src="images/tasmota_main_screen.jpg" height=400 alt="tasmota main screen">
+</p>
+
+Go into Configure Module
+
