@@ -1,25 +1,19 @@
-# 👋About the MistBuddy Project
+# 👋About the MistBuddy Device Project
 
-This project builds a MistBuddy.  
+This project builds a MistBuddy Humidifier.
 
-![MistBuddy](MistBuddy.jpeg)
 <div style="text-align: center;">
-
-  <img src="MistBuddy.JPEG" alt="MistBuddy" style="width: 1200px;">
-
+<img src="https://raw.githubusercontent.com/solarslurpi/mistbuddy_device/main/docs/images/MistBuddy.jpeg" alt="MistBuddy" style="width: 300px;">
 </div>
-![[
-<img src="doc/" alt="MistBuddy" style="width: 600px;">
 
-MistBuddy consists of a humidifier and two Tasmotized smart plugs. 
->		Note: The term "Tasmotized" is often used in the hobbyist community to refer to a device that has been flashed or reprogrammed with the [Tasmota firmware](https://tasmota.github.io/docs/). This is often done to extend the capabilities of the device or to make it compatible with a wider range of home automation software. In this case the tasmotized device is a [Sonoff S31 wifi smart plug](https://amzn.to/4eT2SJJ).
 
-MistBuddy spews out mist for a number of seconds each minute based on MistBuddy software that sends its power switches ON / OFF messages. The scenario is an indoor grow environment whose humidity is too low.
->Note: Too low humidity can be determined by measuring the environment's VPD (Vapor Pressure Deficit).  VPD is a measure of the difference between the actual and saturation water vapor pressure at a certain temperature. It directly influences a plant's rate of transpiration. High VPD results in increased transpiration, leading to potential plant stress from excessive water loss. This can manifest as wilted leaves, slowed growth, reduced crop yield, and in extreme cases, plants dry up and die. High VPD conditions can deter certain pests preferring moist environments but can encourage others like spider mites and thrips that thrive in hot, dry conditions. Low VPD can lead to reduced transpiration, affecting nutrient transport within the plant and causing lower rates of photosynthesis due to stomatal closure. This condition also increases the risk of diseases such as powdery mildew and botrytis, as well as other pathogens that thrive in high humidity.
+The MistBuddy Device is a DIY humidifier that automatically blows mist out of its hole for a settable number of seconds every minute.
 
-Different plant types will prefer different ideal vpd levels. Some plants, like cacti and other succulents, are adapted to arid environments with potentially high VPD levels. They have evolved various mechanisms to conserve water, such as reduced leaf surface area and the ability to store water in their tissues. On the other hand, plants native to humid, tropical environments, like orchids, may prefer lower VPD levels. These plants have evolved to thrive in conditions of high humidity and are typically more sensitive to water loss through transpiration.
+The "secret sauce" is two [Tasmotized](docs/Glossary.md#tasmota-tasmotized) power plugs that power the fan and the mister. A Raspberry Pi with MistBuddy software runs on the local wifi and sends power on/off requests for the amount of seconds defined by the user. _All data remains local. Nothing is sent to a cloud service._
 
-I found this YouTube video best explained (at least to the way I see things) water vapor, temperature's relationship to Relative Humidity and VPD.
+<div style="text-align: center;">
+<img src="docs/images/rasp_pi_and_plugs.png" alt="rasp pi and power plugs" style="width: 300px;">
+</div>
 
 The humidifier is an evolution of the one in the YouTube video [How to Build a Homemade Humidifier Using Ultrasonic Misters / fogger](https://www.youtube.com/watch?v=vmiO6Z_HLCE).
 
@@ -30,11 +24,10 @@ The current software that sends ON / OFF messages to a MistBuddy device can be f
 - **THANK YOU Oak and Spore Mushroom Farm** for the video on [How to Build a Homemade Humidifier Using Ultrasonic Misters / fogger](https://www.youtube.com/watch?v=vmiO6Z_HLCE).  The directions were clear, easy to follow, and easy to customize.
 - **THANK YOU mostlychris** for the video on [Tasmota on Sonoff. Flash the S31 plug with Tasmota firmware for local control](https://www.youtube.com/watch?v=9N58uy3ezvA).  Your directions were clear and made the process seem far less intimidating.
 
-
-# Build the Humidifier
+# 🔩 Build the Humidifier
 >**CAVEAT**: I have been using a build using these parts.  As in "it works for me."  I am not a professional.  I am sharing with in hopes it can benefit others.  I am not responsible for any damages to your home or property.
 
-## BoM
+## 💰 BoM
 
 The supplies needed to build this component of MistBuddy include:
 
@@ -50,32 +43,72 @@ The supplies needed to build this component of MistBuddy include:
 | Float Valve | $10 | [Float Valve](https://amzn.to/43NemIL) to stop the constantly running water line from filling the tub.
 | Water Source Connector | $15 (for 4) | [1/2" Barb to 1/2 " NPT female connector](https://amzn.to/3yzxlsG) _Note: The _connector fittings _assume_ 1/2"_ PEX connector to incoming water_ (see image below)
 
-<!-- 2 cols for xtra small, 3 for small, 3 for medium, and 3 for large screens -->
+Follow the directions in the video [How to Build a Homemade Humidifier Using Ultrasonic Misters / fogger](https://www.youtube.com/watch?v=vmiO6Z_HLCE) to build the humidifier.
 
-# Tasmotize the Power Switches
-In order to send mqtt messages to a power switch, the easiest way is to use a Tasmotized device.  The easiest way to do this is to reflash the [SONOFF S31 Lite plugs](https://amzn.to/3xnPWYc) with Tasmota.
+# ⚡Tasmotize the Power Switches
+A Tasmotized power switch allows software to send Power on and off mqtt messages.  The easiest way to do this is to reflash the [SONOFF S31 Lite plugs](https://amzn.to/3xnPWYc) with Tasmota.
 
 The reasons for the S31 plug include:
 - it uses the ESP8266 microcontroller with accessible flash memory and exposed programming pins, making it amenable to custom firmware.
 - the S31 Lite doesn't incorporate hardware-level restrictions like dedicated encryption chips that would prevent firmware modifications.
 - it is community supported.
 
-## Buy Two S31 Lite Plugs
+## 💰 Buy Two S31 Lite Plugs
 These directions assumed you have two [Sonoff S31 plugs](https://amzn.to/3xnPWYc) smart plugs.
-## Flash the Smart Plugs
+## 💥Flash the Smart Plugs
 The Sonoff S31 (or S31 Lite) can be flashed so that Tasmota is running on the local wifi. [This YouTube video gives instructions on how to flash Tasmota](https://www.youtube.com/watch?v=9N58uy3ezvA).
 ooh! Extra care when soldering.  If not, well...it is way too easy to rip off one of the pads...
 >If soldering, it is easy to rip off the pads.  I found using [clamp fixture with pogo pins/ 2.54mm Single row 6P](https://www.aliexpress.us/item/3256804682713003.html?spm=a2g0o.order_list.order_list_main.15.4b181802cPkXRI&gatewayAdapt=glo2usa) from aliexpress to be the best way to flash without soldering.
 
-# Setup the Power Switches
-Once the power switches have been flashed with Tasmota and put back together, plug it into the wall.
-## Find the IP addresses 
-Use a tool like [Angry IP](https://angryip.org/) to show the IP address.
-## Configure
-Go to a browser tab and type in the IP address of the Tasmotized smart plug. You'll be presented with a screen. Once configured, it will look something like:
-<p align="center">
-  <img src="images/tasmota_main_screen.jpg" height=400 alt="tasmota main screen">
-</p>
+## 📶  Connect to WiFi
+When a Tasmota device is first booted after flashing, it starts in Access Point (AP) mode. This is called "Wi-Fi Configuration Mode" in Tasmota terminology.
 
-Go into Configure Module
+In this mode, the device creates its own Wi-Fi network, typically named something like "tasmota-XXXXXX" where XXXXXX is a unique identifier.
 
+- Connect to this network with your smartphone or computer. Once connected, you should be redirected to a captive portal (if not, you can manually navigate to 192.168.4.1 in a web browser).
+- In this portal, configure the device to connect to your home Wi-Fi network by providing your network's SSID and password.
+After you save these settings, the device will restart and attempt to connect to your specified Wi-Fi network. Note the IP address being used by the device.
+- If the connection fails, the device will revert to AP mode after a few attempts, allowing you to try the configuration again.
+
+## 🔧 Configure
+Configuration include:
+1. Setting up the device's GPIO pins and base device settings.
+2. Configuring the device to connect to your local Wi-Fi network.
+3. Setting up MQTT to enable communication with other devices on your network.
+
+### 1. Setting up the GPIO Pins and Base Settings:
+- **Access the Tasmota Web Interface**:
+   - Connect your computer or smartphone to the same network as your Tasmota device.
+   - Open a web browser and enter the IP address of your Tasmota device.
+
+- **Navigate to Configuration**:
+   - Once you are on the Tasmota web interface, click on **Configuration** then click on **Configure Other**.
+   - In the **Template** field, paste the following template string:
+     ```json
+     {"NAME":"Generic","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":18}
+     ```
+   - Ensure the **Activate** checkbox is selected to apply the template.
+
+- **Save and Reboot**:
+   - Click **Save** to apply the template configuration. The device will automatically reboot with the new settings.
+
+- **Additional Resources**:
+For more detailed information on creating and using templates in Tasmota, please refer to the following Tasmota documentation:
+   - [Tasmota Device Templates](https://tasmota.github.io/docs/Templates/)
+   - [Tasmota Configuration](https://tasmota.github.io/docs/Configuration/)
+
+### 3. Configure MQTT Settings
+[Tasmota's Backlog command](https://tasmota.github.io/docs/MQTT/#configure-mqtt-using-backlog) will be used to configure the MQTT settings.
+
+- **Define and Execute the Backlog Command**
+Assuming defaults for most things, the Host and Topic parameters are unique to your environment.   For host, I used the IP name of my Raspberry Pi, which is gus.local. The Topic is unique to each device.  One of the plugs has the topic mistbuddy_mister and the other has the topic mistbuddy_fan.  The prefix is left to the default.
+The backlog command for my configuration is:
+```bash
+Backlog mqtthost gus.local;  topic mistbuddy_mister
+```
+- **Verify Messages Are Sent**
+I use [MQTTExplorer](https://mqtt-explorer.com/). It's a popular tool for debugging and exploring MQTT-based systems.
+
+# 🚀 Usage
+
+Once you have set up a MistBuddy Device, you can control it using the MistBuddy software running on your Raspberry Pi.
